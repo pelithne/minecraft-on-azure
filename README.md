@@ -117,6 +117,10 @@ ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "stop"\015'
 
 [Install]
 WantedBy=multi-user.target
+````
+
+Worth noticing is this line ````ExecStart=/usr/bin/screen -DmS mc-%i /usr/bin/java -Xmx3G -jar minecraft_server.jar nogui```` which tells the server to use 3 Gig of memory as a max. I set it to this because the VM we used has 4 Gig RAM available, and I didn't want to push it further (though that is probably possible if needed). 
+
 
 
 Now, we can try to start the minecraft Server
