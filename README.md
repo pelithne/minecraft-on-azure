@@ -127,6 +127,14 @@ WantedBy=multi-user.target
 
 Worth noticing is this line ````ExecStart=/usr/bin/screen -DmS mc-%i /usr/bin/java -Xmx3G -jar minecraft_server.jar nogui```` which tells the server to use 3 Gig of memory as a max. I set it to this because the VM we used has 4 Gig RAM available, and I didn't want to push it further (though that is probably possible if needed). 
 
+Finally, to make CPU requirements lower, its a good idea to lower the view-distance to perhaps 7 (from default which is 10). To do that, you can run this command:
+
+````
+sudo sed -ir 's/view-distance=10/view-distance=7/g' /opt/minecraft/server/server.properties
+````
+
+This will simply replace a text in your server.properties file, from "view-distance=10" to "view-distance=7"
+
 
 
 Now, we can try to start the minecraft Server
