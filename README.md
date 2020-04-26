@@ -154,19 +154,19 @@ One way of doing this is to use a **Logic app**. A Logic app is a "No code" way 
 Go to the portal and search for "logic apps" and select "Logic Apps" from the list of search results
 
 <p align="left">
-  <img width="40%"  src="./media/search-logic-app.png">
+  <img width="60%"  src="./media/search-logic-app.png">
 </p>
 
 You will end up with a page that looks similar to this:
 
 <p align="left">
-  <img width="40%"  src="./media/create-logic-app.png">
+  <img width="60%"  src="./media/create-logic-app.png">
 </p>
 
 Click the button "Create Logic App" at the bottom of the page. You will be asked to fill in the details for your logic app. It should look similar to this (just make sure that you use the resource group created earlier, and place it in the same region as your virtual machine, e.g. West Europe)
 
 <p align="left">
-  <img width="40%"  src="./media/details-logic-app.png">
+  <img width="60%"  src="./media/details-logic-app.png">
 </p>
 
 When the logic app has been created, you can use the button "Go to resource" to get to your new app.
@@ -178,19 +178,19 @@ When the logic app has been created, you can use the button "Go to resource" to 
 You should see a page that looks similar to the picture below. We will be using a time based trigger for our function, so you will use the trigger called **Recurrence**
 
 <p align="left">
-  <img width="40%"  src="./media/recurrence.png">
+  <img width="50%"  src="./media/recurrence.png">
 </p>
 
 Use the "Add new parameter" button to add "Time zone" and hours and minutes, like this:
 
 <p align="left">
-  <img width="40%"  src="./media/recurrence-step1-parameters.png">
+  <img width="50%"  src="./media/recurrence-step1-parameters.png">
 </p>
 
 Then set the values to whatever works for you, similar to this:
 
 <p align="left">
-  <img width="40%"  src="./media/recurrence-step1.png">
+  <img width="50%"  src="./media/recurrence-step1.png">
 </p>
 
 When you are done, you have created the trigger that controls when your app runs. Click the save button to make sure that the function app is created.
@@ -202,7 +202,7 @@ For this to actually *work*, we need to do some additional work with permissions
 First, we need to give the logic app an identity. This is done in the identity section of your logic app. Click *Identity* under *settings* in the left hand pane:
 
 <p align="left">
-  <img width="40%"  src="./media/identity-settings.png">
+  <img width="20%"  src="./media/identity-settings.png">
 </p>
 
 In the following page, make sure that the **System Assigned** managed identity is set to **on**, and then click *save*. 
@@ -215,19 +215,19 @@ In the following page, make sure that the **System Assigned** managed identity i
 Now we need to allow this identity to restart our Virtual Machine. This is done from the settings page of the virtual machine, in the "Access Control (IAM)" 
 
 <p align="left">
-  <img width="40%"  src="./media/access-control.png">
+  <img width="20%"  src="./media/access-control.png">
 </p>
 
 Click the "+ Add" and choose "Add role assignment"
 
 <p align="left">
-  <img width="40%"  src="./media/add.png">
+  <img width="50%"  src="./media/add.png">
 </p>
 
 Fill out the settings. Use the role "Virtual Machine Contributor", then assign access to "Logic App" and select the logic app you created previously.
 
 <p align="left">
-  <img width="40%"  src="./media/add-role-assignment.png">
+  <img width="30%"  src="./media/add-role-assignment.png">
 </p>
 
 Click **Save**.
@@ -250,10 +250,14 @@ Replace "<your virtual machine name>" with the name of your VM (in my case minec
 
 Then select "Add new parameter" and select "Authentication". Choose Authentication type "Managed Identity" and "System Assigned Managed Identity" (this is the identity you created earlier). 
 
-YOu should end up with something that looks similar to this (but with values replaced as suggested above):
+You should end up with something that looks similar to this (but with values replaced as suggested above):
 
 <p align="left">
-  <img width="40%"  src="./media/http-post.png">
+  <img width="60%"  src="./media/http-post.png">
 </p>
 
-Click Save, and that's it.
+Click Save, and that's it. Your logic app should now run once per day and start your virtual machine. 
+
+You can try it out by stopping your VM from the Virtual machine settings page, and then select "Run Trigger" from your functions app page. If all goes well, your machine should start and your minecraft server should be automatically started when the server is up.
+
+If not... either I made an error in the instruction (in which case I'd be happy if you write an issue) or you didn't follow the instructions (in which case you might want to go get a cup of coffee, and retry :-) )
