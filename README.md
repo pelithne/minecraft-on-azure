@@ -242,11 +242,11 @@ Click on "New step" and and use the HTTP. Then choose "POST" as method, and past
 ````
 https://management.azure.com/subscriptions/<your subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Compute/virtualMachines/<your virtual machine name>/start?api-version=2019-03-01
 ````
-Replace "<your subscription id>" with the ID that you found in the previous step.
+Replace "\<your subscription id\>" with the ID that you found in the previous step.
 
-Replace "<your resource group>" with the name of the resource group you created earlier (in my case, "minecraft").
+Replace "\<your resource group\>" with the name of the resource group you created earlier (in my case, "minecraft").
 
-Replace "<your virtual machine name>" with the name of your VM (in my case minecraftvm)
+Replace "\<your virtual machine name\>" with the name of your VM (in my case minecraftvm)
 
 Then select "Add new parameter" and select "Authentication". Choose Authentication type "Managed Identity" and "System Assigned Managed Identity" (this is the identity you created earlier). 
 
