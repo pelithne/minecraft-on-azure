@@ -25,7 +25,7 @@ For the "Resource Group" choose **create new** and give is a nice name. I called
 For "size" I selected B2s, which is a rather inexpensive VM size with 2 vCPUs and 4 Gig RAM, that will probably stand up for 10 simultaneous users (just guessing). 
 
 <p align="left">
-  <img width="40%"  src="./media/create-vm.png">
+  <img width="60%"  src="./media/create-vm.png">
 </p>
 
 
@@ -36,7 +36,7 @@ Also, you need to allow ````ssh```` in the inbound port section.
 This is how it should look, sort of:
 
 <p align="left">
-  <img width="40%"  src="./media/access.png">
+  <img width="60%"  src="./media/access.png">
 </p>
 
 At this point you could either go ahead and click "Review + Create" or you can click on "next" to customize your VM further. If you click next, I suggest the following settings:
