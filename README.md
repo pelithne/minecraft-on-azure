@@ -3,9 +3,6 @@ This page contains some brief instructions for setting up a minecraft server on 
 
 To be able to follow along, you need an Azure subscription. If you don't have one, you can sign up for free here: https://azure.microsoft.com/en-us/free/
 
-The instructions are based on what can be found here: 
-https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server
-
 
 ## Start Ubuntu 18.04 server on Azure
 First make sure you are logged in to the Azure portal, on https://portal.azure.com
@@ -22,7 +19,7 @@ In the next screen, fill out the details in a similar way as in the picture belo
 
 For the "Resource Group" choose **create new** and give is a nice name. I called it "minecraft". 
 
-For "size" I selected B2s, which is a rather inexpensive VM size with 2 vCPUs and 4 Gig RAM, that will probably stand up for 10 simultaneous users (just guessing). 
+For "size" I selected B2s, which is a rather inexpensive VM size with 2 vCPUs and 4 Gig RAM, that will probably stand up for 5 simultaneous users (just guessing).
 
 <p align="left">
   <img width="70%"  src="./media/create-vm.png">
