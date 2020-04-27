@@ -78,7 +78,7 @@ $ sudo useradd -m -r -d /opt/minecraft minecraft
 ## Install minecraft Server
 The commands below will create a directory to hold your server. For simplicity, lets call it "server". It should be located under /opt/minecraft, to keep things tidy.
 
-Then we use wget to download the minecraft server. The command downloads version 1.12.2, but you can check with the official minecraft page if there is a newer one available.
+Then you will use wget to download the minecraft server. The command downloads version 1.12.2, but you can check with the official minecraft page if there is a newer one available.
 
 
 ````
@@ -86,7 +86,7 @@ $ sudo mkdir /opt/minecraft/server
 $ sudo wget -O /opt/minecraft/server/minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar
 ````
 
-Then we change the ownership of the newly created folder, to our newly create minecraft user, and make sure that EULA is set to true (this is needed for the server to start. Its kind of like the "do you approve the terms and conditions"-checkbox which everyone clicks without reading the terms and conditions...)
+Then change the ownership of the newly created folder, to our newly create minecraft user, and make sure that EULA is set to true (this is needed for the server to start. Its kind of like the "do you approve the terms and conditions"-checkbox which everyone clicks without reading the terms and conditions...)
 
 ````
 $ sudo chown -R minecraft /opt/minecraft/server/
@@ -96,7 +96,7 @@ $ sudo bash -c "echo eula=true > /opt/minecraft/server/eula.txt"
 
 
 ## Autostart
-We want the minecraft server to start automatically when the virtual machine is started. This will enable us to save money by shutting down the server when it is not needed, and to recover if the VM should crash or break in some way. 
+Its a good idea to have the minecraft server start automatically when the virtual machine is started. This will enable you to save money by shutting down the server when it is not needed, and to recover if the VM should crash or break in some way. 
 
 Create a file named /etc/systemd/system/minecraft@.service file with the following content:
 
@@ -125,7 +125,7 @@ ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "stop"\015'
 WantedBy=multi-user.target
 ````
 
-Worth noticing is this line ````ExecStart=/usr/bin/screen -DmS mc-%i /usr/bin/java -Xmx3G -jar minecraft_server.jar nogui```` which tells the server to use 3 Gig of memory as a max. I set it to this because the VM we used has 4 Gig RAM available, and I didn't want to push it further (though that is probably possible if needed). 
+Worth noticing is this line ````ExecStart=/usr/bin/screen -DmS mc-%i /usr/bin/java -Xmx3G -jar minecraft_server.jar nogui```` which tells the server to use 3 Gig of memory as a max. I set it to this because the VM has 4 Gig RAM available, and I didn't want to push it further (though that is probably possible if needed).
 
 Finally, to make CPU requirements lower, its a good idea to lower the view-distance to perhaps 7 (from default which is 10). To do that, you can run this command:
 
@@ -137,7 +137,7 @@ This will simply replace a text in your server.properties file, from "view-dista
 
 
 
-Now, we can try to start the minecraft Server
+Now start the minecraft Server
 ````
 $ sudo systemctl start minecraft@server
 ````
@@ -157,7 +157,7 @@ $ sudo systemctl enable minecraft@server
 
 In order to save money, I activated automatic shutdown of the VM at midnight. To start it up again, you can simply start the VM from the Azure portal. However, if you want this to happen at the same time everyday, you might as well automate a little bit. 
 
-One way of doing this is to use a **Logic app**. A Logic app is a "No code" way of creating a small function that performs a specific task. In our case, we will create a logic app that starts the VM every day at 09:00.
+One way of doing this is to use a **Logic app**. A Logic app is a "No code" way of creating a small function that performs a specific task. You will create a logic app that starts the VM every day at 09:00 (or any other time that you want).
 
 Go to the portal and search for "logic apps" and select "Logic Apps" from the list of search results
 
@@ -183,7 +183,7 @@ When the logic app has been created, you can use the button "Go to resource" to 
   <img width="40%"  src="./media/go-to-resource.png">
 </p>
 
-You should see a page that looks similar to the picture below. We will be using a time based trigger for our function, so you will use the trigger called **Recurrence**
+You should see a page that looks similar to the picture below. You will be using a time based trigger for the function, so you will use the trigger called **Recurrence**
 
 <p align="left">
   <img width="50%"  src="./media/recurrence.png">
@@ -203,11 +203,11 @@ Then set the values to whatever works for you, similar to this:
 
 When you are done, you have created the trigger that controls when your app runs. Click the save button to make sure that the function app is created.
 
-Now you need to make it do something as well... We want it to do an HTTP call to the Azure API, to start the Minecraft Virtual machine. 
+Now you need to make it do something as well... It should do an HTTP call to the Azure API, to start the Minecraft Virtual machine. 
 
-For this to actually *work*, we need to do some additional work with permissions, more precisely **Managed Identity**. In short, we need to allow the logic app to start the virtual machine. 
+For this to actually *work*, you need to setup some permissions, more precisely a **Managed Identity** and a **Role Assignment**. In a sentence, you need to allow the logic app to start the virtual machine. 
 
-First, we need to give the logic app an identity. This is done in the identity section of your logic app. Click *Identity* under *settings* in the left hand pane:
+First, give the logic app an identity. This is done in the identity section of your logic app. Click *Identity* under *settings* in the left hand pane:
 
 <p align="left">
   <img width="20%"  src="./media/identity-settings.png">
@@ -220,7 +220,7 @@ In the following page, make sure that the **System Assigned** managed identity i
 </p>
 
 
-Now we need to allow this identity to restart our Virtual Machine. This is done from the settings page of the virtual machine, in the "Access Control (IAM)" 
+Then, allow this identity to restart our Virtual Machine. This is done from the settings page of the virtual machine. Select "Access Control (IAM)" section in the left hand tool baryou.  
 
 <p align="left">
   <img width="20%"  src="./media/access-control.png">
@@ -240,10 +240,10 @@ Fill out the settings. Use the role "Virtual Machine Contributor", then assign a
 
 Click **Save**.
 
-Before moving on to the next step, we need to find the GUID of the subscription we are using. You can do that by using the search bar as search for **subscriptions** and select subscriptions from the search results. Next to the name of your subscription, there will be a long alphanumeric string, called the Subscription ID. Copy that string, you will need it later. 
+Before moving on to the next step, you need to find the GUID of the subscription you are using. You can do that by using the search bar and search for **subscriptions** and select subscriptions from the search results. Next to the name of your subscription, there will be a long alphanumeric string, called the Subscription ID. Copy that string, you will need it later. 
 
 
-To start a VM using the Azure API, we can add a new step to the logic app. Go to your logic app, and navigate to **Logic app designer** under development tools in the left hand navigation pane. 
+To start a VM using the Azure API, add a new step to the logic app. Go to your logic app, and navigate to **Logic app designer** under development tools in the left hand navigation pane. 
 
 Click on "New step" and and use the HTTP. Then choose "POST" as method, and paste in the following into the **URI** field
 
