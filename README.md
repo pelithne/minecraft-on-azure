@@ -1,5 +1,5 @@
 # Introduction
-This page contains very brief instructions for setting up a minecraft server on a virtual machine in Azure. 
+This page contains some brief instructions for setting up a minecraft server on a virtual machine in Azure. 
 
 To be able to follow along, you need an Azure subscription. If you don't have one, you can sign up for free here: https://azure.microsoft.com/en-us/free/
 
@@ -25,7 +25,7 @@ For the "Resource Group" choose **create new** and give is a nice name. I called
 For "size" I selected B2s, which is a rather inexpensive VM size with 2 vCPUs and 4 Gig RAM, that will probably stand up for 10 simultaneous users (just guessing). 
 
 <p align="left">
-  <img width="60%"  src="./media/create-vm.png">
+  <img width="70%"  src="./media/create-vm.png">
 </p>
 
 
@@ -36,7 +36,7 @@ Also, you need to allow ````ssh```` in the inbound port section.
 This is how it should look, sort of:
 
 <p align="left">
-  <img width="60%"  src="./media/access.png">
+  <img width="70%"  src="./media/access.png">
 </p>
 
 At this point you could either go ahead and click "Review + Create" or you can click on "next" to customize your VM further. If you click next, I suggest the following settings:
@@ -58,7 +58,7 @@ When the VM has been created, you can use the button "Go to resource" to go to p
 ## Access the VM
 For this step I will assume that you know how to use ssh. If not, find a basic ssh tutorial somewhere, its a very easy tool to use, once you know a few basics.
 
-In the Auzre portal, you can find the address to connect to. This info is located where the rest of the info about your VM is. Look for DNS Name. It should be something similar to DNS name my_mc_server.westeurope.cloudapp.azure.com
+In the Auzre portal, you can find the address to connect to. This info is located in the Overview page for your Virtual Machine. Look for "DNS Name". It should be something similar to DNS name my_mc_server.westeurope.cloudapp.azure.com
 
 To access your machine with SSH, type in this (change your_user_name to your actual user name :-) and change *my_mc_server* to the actual name of your server) 
 
