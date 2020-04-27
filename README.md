@@ -78,12 +78,12 @@ $ sudo useradd -m -r -d /opt/minecraft minecraft
 ## Install minecraft Server
 The commands below will create a directory to hold your server. For simplicity, lets call it "server". It should be located under /opt/minecraft, to keep things tidy.
 
-Then you will use wget to download the minecraft server. The command downloads version 1.12.2, but you can check with the official minecraft page if there is a newer one available.
+Then you will use wget to download the minecraft server. The version is 1.15.2 and the download URL comes from https://www.minecraft.net/en-us/download/server. 
 
 
 ````
 $ sudo mkdir /opt/minecraft/server
-$ sudo wget -O /opt/minecraft/server/minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar
+$ sudo wget -O /opt/minecraft/server/minecraft_server.jar https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar
 ````
 
 Then change the ownership of the newly created folder, to our newly create minecraft user, and make sure that EULA is set to true (this is needed for the server to start. Its kind of like the "do you approve the terms and conditions"-checkbox which everyone clicks without reading the terms and conditions...)
@@ -125,7 +125,7 @@ ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "stop"\015'
 WantedBy=multi-user.target
 ````
 
-Worth noticing is this line ````ExecStart=/usr/bin/screen -DmS mc-%i /usr/bin/java -Xmx3G -jar minecraft_server.jar nogui```` which tells the server to use 3 Gig of memory as a max. I set it to this because the VM has 4 Gig RAM available, and I didn't want to push it further (though that is probably possible if needed).
+Worth noticing is this line ````ExecStart=/usr/bin/screen -DmS mc-%i /usr/bin/java -Xmx3G -jar minecraft_server.jar nogui```` which tells the server to use 3 Gig of memory as a max. I set it to this because the VM has 4 Gig RAM available, and I wanted to leave a Gig for the OS (this is tweakable, since the OS probably does not need more than maybe 500 MB).
 
 Finally, to make CPU requirements lower, its a good idea to lower the view-distance to perhaps 7 (from default which is 10). To do that, you can run this command:
 
