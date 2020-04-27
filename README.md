@@ -1,5 +1,5 @@
 # Introduction
-This page contains some brief instructions for setting up a minecraft server on a virtual machine in Azure. 
+This page contains some brief instructions for setting up a minecraft server on a virtual machine in Azure. You should end up paying about a Euro per day for this setup (at the time of writing, April 2020).
 
 To be able to follow along, you need an Azure subscription. If you don't have one, you can sign up for free here: https://azure.microsoft.com/en-us/free/
 
