@@ -17,7 +17,7 @@ Click on the **Create** button to start the process of creating the virtual mach
 
 In the next screen, fill out the details in a similar way as in the picture below. 
 
-For the "Resource Group" choose **create new** and give is a nice name. I called it "minecraft". 
+For the "Resource Group" choose **create new** and give is a nice name. I called it "mc". 
 
 For "size" I selected B2s, which is a rather inexpensive VM size with 2 vCPUs and 4 Gig RAM, that will probably stand up for 5 simultaneous users (just guessing).
 
