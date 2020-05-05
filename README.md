@@ -30,6 +30,8 @@ Further down the same page, you need to add a username/password (or ssh key, whi
 
 Also, you need to allow ````ssh```` in the inbound port section. 
 
+### quicknote: you also need to add the default minecraft port to your NSG, port 25565
+
 This is how it should look, sort of:
 
 <p align="left">
@@ -64,6 +66,14 @@ ssh your_user_name@my_mc_server.westeurope.cloudapp.azure.com
 ````
 
 You will be prompted for your password, which you remember, right?
+
+### Install Java
+
+Minecraft is written in Java. To run the server, you need a Java runtime. To install, just run the follwing:
+
+````
+sudo apt-get install openjdk-8-jdk
+````
 
 ## Create minecraft user
 Once logged in, you can start by creating a new user. 
